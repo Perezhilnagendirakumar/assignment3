@@ -1,0 +1,33 @@
+# working with matrix and data frames 
+Name <-c("Jeb","Donald","Ted","Marco","Carly","Hillary","Berine")
+# Name variable contains the character vector
+Name
+ABC_political_poll_results <-c(4, 62 ,51, 21, 2, 14, 15)
+# ABC_political_poll_results is a variable containing numeric vector 
+ABC_political_poll_results 
+CBS_political_poll_results <-c(12, 75, 43, 19, 1, 21, 19) 
+# CBS_political_poll_results is a variable containing numeric vector
+CBS_political_poll_results
+# combine the matrices and store it in a variable called election_results 
+#cbind function combines the column of the matrices
+election_results<-cbind(Name,ABC_political_poll_results,CBS_political_poll_results)
+election_results 
+#in the result we see the numeric vector enclosed in quotes 
+# this is because R can store only one class of data if we try to combine 
+# character vector to a numeric vector it causes forced fit means "coerce" also called 
+#as "implicit coercion" to avoid that we use data frames. 
+election_results_df<-data.frame(Name,ABC_political_poll_results,CBS_political_poll_results)
+election_results_df
+# where data frame it will help to store data without disturbing its class
+mean(election_results_df)
+# warning message argument is not numeric 
+# to claculate the mean of individual column 
+mean(election_results_df[,2:3])
+#gives all the information like min ,1stquadrile,median,mean,3rdquad,max
+summary(election_results_df)
+#as.matrix it will calculate * of two columns where each element in
+#CBS_political_poll_results is multiplied with ABC_political_poll_result
+election_result2<-as.matrix(ABC_political_poll_results)%*%CBS_political_poll_results
+election_result2 # to view the result 
+mean(as.data.frame(election_result2))
+summary(election_result2)
